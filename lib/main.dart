@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Nota',
       theme: ThemeData(
         brightness: Brightness.dark,
+        fontFamily: 'Poppins',
         useMaterial3: true,
       ),
       home: const NotesView(),
