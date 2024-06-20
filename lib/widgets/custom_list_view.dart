@@ -19,7 +19,12 @@ class CustomListView extends StatelessWidget {
                     motion: const ScrollMotion(),
                     children: <Widget>[
                       SlidableAction(
-                        onPressed: (context) {},
+                        onPressed: (context) {
+                          NotesCubit.getNotesCubit(context)
+                              .notesList[index]
+                              .delete();
+                          NotesCubit.getNotesCubit(context).getAllNotes();
+                        },
                         borderRadius: BorderRadius.circular(8.0),
                         backgroundColor: Colors.red,
                         foregroundColor: Colors.white,
