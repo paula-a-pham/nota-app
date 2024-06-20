@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nota/constants/colors.dart';
 import 'package:nota/widgets/color_item.dart';
 
 class ColorListView extends StatefulWidget {
@@ -16,19 +17,20 @@ class _ColorListViewState extends State<ColorListView> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => GestureDetector(
-              onTap: () {
-                setState(() {
-                  currentIndex = index;
-                });
-              },
-              child: ColorItem(
-                  isActive: currentIndex == index, color: Colors.black),
-            ),
-        separatorBuilder: (context, index) => const SizedBox(
-              width: 10.0,
-            ),
-        itemCount: 10);
+      scrollDirection: Axis.horizontal,
+      itemBuilder: (context, index) => GestureDetector(
+        onTap: () {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+        child:
+            ColorItem(isActive: currentIndex == index, color: colorList[index]),
+      ),
+      separatorBuilder: (context, index) => const SizedBox(
+        width: 10.0,
+      ),
+      itemCount: colorList.length,
+    );
   }
 }

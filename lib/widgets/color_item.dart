@@ -13,7 +13,7 @@ class ColorItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return isActive
         ? CircleAvatar(
-            radius: 26.0,
+            radius: 27.0,
             backgroundColor: Colors.white,
             child: CircleAvatar(
               radius: 25.0,
