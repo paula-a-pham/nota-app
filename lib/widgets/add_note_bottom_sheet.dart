@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nota/widgets/custom_form.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
@@ -11,9 +12,8 @@ class AddNoteBottomSheet extends StatelessWidget {
           left: 25.0,
           top: 25.0,
           bottom: MediaQuery.of(context).viewInsets.bottom),
-      child: const Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[],
+      child: CustomForm(
+        onPressed: (data) {},
       ),
     );
   }
