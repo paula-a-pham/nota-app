@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
+import 'package:nota/constants/colors.dart';
 import 'package:nota/constants/constants.dart';
 import 'package:nota/cubits/bloc_observer.dart';
 import 'package:nota/cubits/notes_cubit/notes_cubit.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           brightness: Brightness.dark,
           fontFamily: 'Poppins',
+          colorSchemeSeed: kPrimaryColor,
           useMaterial3: true,
         ),
         home: const NotesView(),

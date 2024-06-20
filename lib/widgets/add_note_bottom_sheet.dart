@@ -31,10 +31,13 @@ class AddNoteBottomSheet extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            return CustomForm(
-              onPressed: (note) {
-                AddNoteCubit.getAddNoteCubit(context).addNote(note);
-              },
+            return AbsorbPointer(
+              absorbing: state is AddNoteLoading ? true : false,
+              child: CustomForm(
+                onPressed: (note) {
+                  AddNoteCubit.getAddNoteCubit(context).addNote(note);
+                },
+              ),
             );
           },
         ),
