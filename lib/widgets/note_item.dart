@@ -24,7 +24,7 @@ class NoteItem extends StatelessWidget {
         ),
         subtitle: Text(
           subTitle,
-          maxLines: 3,
+          maxLines: 5,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: Colors.white70),
         ),
