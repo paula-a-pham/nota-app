@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nota/models/note_model.dart';
 import 'package:nota/widgets/custom_filled_button.dart';
 import 'package:nota/widgets/custom_text_form_field.dart';
 
@@ -8,7 +9,7 @@ class CustomForm extends StatefulWidget {
     required this.onPressed,
   });
 
-  final Function(dynamic data) onPressed;
+  final Function(NoteModel note) onPressed;
 
   @override
   State<CustomForm> createState() => _CustomFormState();
@@ -55,7 +56,11 @@ class _CustomFormState extends State<CustomForm> {
                 child: CustomFilledButton(
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        widget.onPressed('');
+                        NoteModel note = NoteModel(
+                            title: titleController.text,
+                            subTitle: titleController.text,
+                            color: Colors.transparent.value);
+                        widget.onPressed(note);
                       } else {
                         setState(() {
                           autovalidateMode = AutovalidateMode.always;
