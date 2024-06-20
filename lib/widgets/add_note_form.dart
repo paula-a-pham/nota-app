@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nota/models/note_model.dart';
+import 'package:nota/widgets/add_note_color_list_view.dart';
 import 'package:nota/widgets/custom_filled_button.dart';
 import 'package:nota/widgets/custom_text_form_field.dart';
 
@@ -48,7 +49,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
             hintText: 'Sub Title',
           ),
           const SizedBox(
-            height: 10.0,
+            height: 15.0,
+          ),
+          const SizedBox(
+            height: 27 * 2,
+            child: AddNoteColorListView(),
+          ),
+          const SizedBox(
+            height: 15.0,
           ),
           Row(
             children: <Widget>[
