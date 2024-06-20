@@ -17,6 +17,8 @@ class CustomForm extends StatefulWidget {
 class _CustomFormState extends State<CustomForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
 
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+
   final TextEditingController titleController = TextEditingController();
 
   final TextEditingController subTitleController = TextEditingController();
@@ -25,6 +27,7 @@ class _CustomFormState extends State<CustomForm> {
   Widget build(BuildContext context) {
     return Form(
       key: formKey,
+      autovalidateMode: autovalidateMode,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -34,18 +37,30 @@ class _CustomFormState extends State<CustomForm> {
             fontSize: 20,
             hintText: 'Title',
           ),
+          const SizedBox(
+            height: 10.0,
+          ),
           CustomTextFormField(
             textEditingController: subTitleController,
             maxLines: 5,
             fontSize: 15,
             hintText: 'Sub Title',
           ),
+          const SizedBox(
+            height: 10.0,
+          ),
           Row(
             children: <Widget>[
               Expanded(
                 child: CustomFilledButton(
                     onPressed: () {
-                      widget.onPressed('');
+                      if (formKey.currentState!.validate()) {
+                        widget.onPressed('');
+                      } else {
+                        setState(() {
+                          autovalidateMode = AutovalidateMode.always;
+                        });
+                      }
                     },
                     title: 'Save'),
               ),
