@@ -24,8 +24,11 @@ class CustomListView extends StatelessWidget {
                             onPressed: (context) {
                               NotesCubit.getNotesCubit(context)
                                   .notesList[index]
-                                  .delete();
-                              NotesCubit.getNotesCubit(context).getAllNotes();
+                                  .delete()
+                                  .then(
+                                    (value) => NotesCubit.getNotesCubit(context)
+                                        .getAllNotes(),
+                                  );
                             },
                             borderRadius: BorderRadius.circular(8.0),
                             backgroundColor: Colors.red,
