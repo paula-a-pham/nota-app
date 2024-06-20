@@ -36,8 +36,11 @@ class CustomListView extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: NoteItem(
-                    note: NotesCubit.getNotesCubit(context).notesList[index],
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: NoteItem(
+                      note: NotesCubit.getNotesCubit(context).notesList[index],
+                    ),
                   ),
                 ),
             separatorBuilder: (context, index) => const SizedBox(
