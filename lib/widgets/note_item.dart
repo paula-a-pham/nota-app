@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:nota/models/note_model.dart';
 
 class NoteItem extends StatelessWidget {
-  final String title;
-  final String subTitle;
+  final NoteModel note;
   const NoteItem({
     super.key,
-    required this.title,
-    required this.subTitle,
+    required this.note,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.transparent,
+        color: Color(note.color),
         borderRadius: BorderRadius.circular(8.0),
         border: Border.all(color: Colors.white, width: 0.5),
       ),
       child: ListTile(
         title: Text(
-          title,
+          note.title,
           style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         subtitle: Text(
-          subTitle,
+          note.subTitle,
           maxLines: 5,
           overflow: TextOverflow.ellipsis,
           style: const TextStyle(color: Colors.white70),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nota/cubits/notes_cubit/notes_cubit.dart';
 import 'package:nota/widgets/note_item.dart';
 
@@ -9,14 +10,17 @@ class CustomListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-        itemBuilder: (context, index) => const NoteItem(
-              title: 'New Note',
-              subTitle: 'This is a new note for testing',
-            ),
-        separatorBuilder: (context, index) => const SizedBox(
-              height: 10.0,
-            ),
-        itemCount: NotesCubit.getNotesCubit(context).notesList.length);
+    return BlocBuilder<NotesCubit, NotesState>(
+      builder: (context, state) {
+        return ListView.separated(
+            itemBuilder: (context, index) => NoteItem(
+                  note: NotesCubit.getNotesCubit(context).notesList[index],
+                ),
+            separatorBuilder: (context, index) => const SizedBox(
+                  height: 10.0,
+                ),
+            itemCount: NotesCubit.getNotesCubit(context).notesList.length);
+      },
+    );
   }
 }

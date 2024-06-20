@@ -58,7 +58,7 @@ class _CustomFormState extends State<CustomForm> {
                       if (formKey.currentState!.validate()) {
                         NoteModel note = NoteModel(
                             title: titleController.text,
-                            subTitle: titleController.text,
+                            subTitle: subTitleController.text,
                             color: Colors.transparent.value);
                         widget.onPressed(note);
                       } else {

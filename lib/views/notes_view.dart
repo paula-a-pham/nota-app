@@ -13,13 +13,9 @@ class NotesView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Nota'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: BlocBuilder<NotesCubit, NotesState>(
-          builder: (context, state) {
-            return const CustomListView();
-          },
-        ),
+      body: const Padding(
+        padding: EdgeInsets.all(15.0),
+        child: CustomListView(),
       ),
       floatingActionButton: const CustomFloatingActionButton(),
     );
