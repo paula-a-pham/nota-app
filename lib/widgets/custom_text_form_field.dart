@@ -6,7 +6,6 @@ class CustomTextFormField extends StatelessWidget {
   final int maxLines;
   final double fontSize;
   final String hintText;
-  final String? label;
 
   const CustomTextFormField({
     super.key,
@@ -14,7 +13,6 @@ class CustomTextFormField extends StatelessWidget {
     required this.maxLines,
     required this.fontSize,
     required this.hintText,
-    this.label,
   });
 
   @override
@@ -34,7 +32,6 @@ class CustomTextFormField extends StatelessWidget {
       textAlign: TextAlign.start,
       decoration: InputDecoration(
         hintText: hintText,
-        labelText: label,
         hintStyle: TextStyle(fontSize: fontSize),
         border: InputBorder.none,
         errorBorder: InputBorder.none,
