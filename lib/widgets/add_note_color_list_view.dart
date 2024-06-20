@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nota/constants/colors.dart';
+import 'package:nota/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:nota/widgets/color_item.dart';
 
 class AddNoteColorListView extends StatefulWidget {
@@ -22,6 +23,13 @@ class _AddNoteColorListViewState extends State<AddNoteColorListView> {
         onTap: () {
           setState(() {
             currentIndex = index;
+            if (index == 0) {
+              AddNoteCubit.getAddNoteCubit(context).noteColor =
+                  Colors.transparent.value;
+            } else {
+              AddNoteCubit.getAddNoteCubit(context).noteColor =
+                  kColorList[index].value;
+            }
           });
         },
         child: ColorItem(

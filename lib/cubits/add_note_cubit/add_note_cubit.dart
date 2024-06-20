@@ -9,6 +9,8 @@ part 'add_note_state.dart';
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
 
+  int noteColor = Colors.transparent.value;
+
   static AddNoteCubit getAddNoteCubit(BuildContext context) =>
       BlocProvider.of(context);
 
@@ -16,6 +18,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
     try {
       emit(AddNoteLoading());
       Box<NoteModel> noteBox = Hive.box<NoteModel>(kNotesBox);
+      note.color = noteColor;
       await noteBox.add(note);
       emit(AddNoteSuccess());
     } catch (error) {
