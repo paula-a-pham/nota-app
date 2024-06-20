@@ -12,9 +12,10 @@ class CustomFloatingActionButton extends StatelessWidget {
     return FloatingActionButton(
       onPressed: () {
         showModalBottomSheet(
-            context: context,
-            builder: (context) => const AddNoteBottomSheet(),
-            isScrollControlled: true);
+          context: context,
+          builder: (context) => const AddNoteBottomSheet(),
+          isScrollControlled: true,
+        );
       },
       backgroundColor: kPrimaryColor,
       foregroundColor: Colors.white,

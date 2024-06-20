@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:nota/cubits/notes_cubit/notes_cubit.dart';
+import 'package:nota/widgets/edit_note_bottom_sheet.dart';
 import 'package:nota/widgets/note_item.dart';
 
 class CustomListView extends StatelessWidget {
@@ -37,7 +38,16 @@ class CustomListView extends StatelessWidget {
                     ],
                   ),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => EditNoteBottomSheet(
+                          note: NotesCubit.getNotesCubit(context)
+                              .notesList[index],
+                        ),
+                        isScrollControlled: true,
+                      );
+                    },
                     child: NoteItem(
                       note: NotesCubit.getNotesCubit(context).notesList[index],
                     ),

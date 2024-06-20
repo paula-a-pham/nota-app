@@ -15,6 +15,7 @@ class EditNoteBottomSheet extends StatefulWidget {
 
 class _EditNoteBottomSheetState extends State<EditNoteBottomSheet> {
   String? title, subTitle;
+  final GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -23,48 +24,56 @@ class _EditNoteBottomSheetState extends State<EditNoteBottomSheet> {
           left: 25.0,
           top: 25.0,
           bottom: MediaQuery.of(context).viewInsets.bottom),
-      child: ListView(
-        children: <Widget>[
-          CustomTextFormField(
-            textEditingController:
-                TextEditingController(text: widget.note.title),
-            onChanged: (value) => title = value,
-            maxLines: 1,
-            fontSize: 20,
-            hintText: 'Title',
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          CustomTextFormField(
-            textEditingController:
-                TextEditingController(text: widget.note.subTitle),
-            onChanged: (value) => subTitle = value,
-            maxLines: 5,
-            fontSize: 15,
-            hintText: 'Sub Title',
-          ),
-          const SizedBox(
-            height: 10.0,
-          ),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: CustomFilledButton(
-                    onPressed: () {
-                      widget.note.title = title ?? widget.note.title;
-                      widget.note.subTitle = subTitle ?? widget.note.subTitle;
-                      widget.note.save();
-                      NotesCubit.getNotesCubit(context).getAllNotes();
-                    },
-                    title: 'Save'),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-        ],
+      child: Form(
+        key: formKey,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            CustomTextFormField(
+              textEditingController:
+                  TextEditingController(text: widget.note.title),
+              onChanged: (value) => title = value,
+              maxLines: 1,
+              fontSize: 20,
+              hintText: 'Title',
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            CustomTextFormField(
+              textEditingController:
+                  TextEditingController(text: widget.note.subTitle),
+              onChanged: (value) => subTitle = value,
+              maxLines: 5,
+              fontSize: 15,
+              hintText: 'Sub Title',
+            ),
+            const SizedBox(
+              height: 10.0,
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: CustomFilledButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                          widget.note.title = title ?? widget.note.title;
+                          widget.note.subTitle =
+                              subTitle ?? widget.note.subTitle;
+                          widget.note.save();
+                          NotesCubit.getNotesCubit(context).getAllNotes();
+                          Navigator.pop(context);
+                        }
+                      },
+                      title: 'Save'),
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -20,6 +20,7 @@ class CustomTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autofocus: true,
       controller: textEditingController,
       validator: (value) {
         if (value?.isEmpty ?? true) {
