@@ -3,8 +3,8 @@ import 'package:nota/models/note_model.dart';
 import 'package:nota/widgets/custom_filled_button.dart';
 import 'package:nota/widgets/custom_text_form_field.dart';
 
-class CustomForm extends StatefulWidget {
-  const CustomForm({
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({
     super.key,
     required this.onPressed,
   });
@@ -12,10 +12,10 @@ class CustomForm extends StatefulWidget {
   final Function(NoteModel note) onPressed;
 
   @override
-  State<CustomForm> createState() => _CustomFormState();
+  State<AddNoteForm> createState() => _AddNoteFormState();
 }
 
-class _CustomFormState extends State<CustomForm> {
+class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;

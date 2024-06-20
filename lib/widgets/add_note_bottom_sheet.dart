@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nota/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:nota/cubits/notes_cubit/notes_cubit.dart';
-import 'package:nota/widgets/custom_form.dart';
+import 'package:nota/widgets/add_note_form.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
   const AddNoteBottomSheet({super.key});
@@ -33,7 +33,7 @@ class AddNoteBottomSheet extends StatelessWidget {
           builder: (context, state) {
             return AbsorbPointer(
               absorbing: state is AddNoteLoading ? true : false,
-              child: CustomForm(
+              child: AddNoteForm(
                 onPressed: (note) {
                   AddNoteCubit.getAddNoteCubit(context).addNote(note);
                 },
