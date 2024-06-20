@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kPrimaryColor = Color(0xff3D9BE1);
-final List<Color> colorList = [
+final List<Color> kColorList = [
   Color(Colors.black.value),
   const Color(0xffD6CA98),
   const Color(0xffF4D35E),

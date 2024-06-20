@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:nota/constants/colors.dart';
 import 'package:nota/widgets/color_item.dart';
 
-class ColorListView extends StatefulWidget {
-  const ColorListView({
+class AddNoteColorListView extends StatefulWidget {
+  const AddNoteColorListView({
     super.key,
   });
 
   @override
-  State<ColorListView> createState() => _ColorListViewState();
+  State<AddNoteColorListView> createState() => _AddNoteColorListViewState();
 }
 
-class _ColorListViewState extends State<ColorListView> {
+class _AddNoteColorListViewState extends State<AddNoteColorListView> {
   int currentIndex = 0;
 
   @override
@@ -24,13 +24,13 @@ class _ColorListViewState extends State<ColorListView> {
             currentIndex = index;
           });
         },
-        child:
-            ColorItem(isActive: currentIndex == index, color: colorList[index]),
+        child: ColorItem(
+            isActive: currentIndex == index, color: kColorList[index]),
       ),
       separatorBuilder: (context, index) => const SizedBox(
         width: 10.0,
       ),
-      itemCount: colorList.length,
+      itemCount: kColorList.length,
     );
   }
 }
