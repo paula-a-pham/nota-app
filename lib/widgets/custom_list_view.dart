@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nota/cubits/notes_cubit/notes_cubit.dart';
 import 'package:nota/widgets/note_item.dart';
 
 class CustomListView extends StatelessWidget {
@@ -16,6 +17,6 @@ class CustomListView extends StatelessWidget {
         separatorBuilder: (context, index) => const SizedBox(
               height: 10.0,
             ),
-        itemCount: 5);
+        itemCount: NotesCubit.getNotesCubit(context).notesList.length);
   }
 }

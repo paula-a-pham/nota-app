@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nota/cubits/notes_cubit/notes_cubit.dart';
 import 'package:nota/widgets/custom_floating_action_button.dart';
 import 'package:nota/widgets/custom_list_view.dart';
 
@@ -11,9 +13,13 @@ class NotesView extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Nota'),
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(15.0),
-        child: CustomListView(),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: BlocBuilder<NotesCubit, NotesState>(
+          builder: (context, state) {
+            return const CustomListView();
+          },
+        ),
       ),
       floatingActionButton: const CustomFloatingActionButton(),
     );
