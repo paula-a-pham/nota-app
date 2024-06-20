@@ -3,6 +3,7 @@ import 'package:nota/constants/colors.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final TextEditingController textEditingController;
+  final Function(String)? onChanged;
   final int maxLines;
   final double fontSize;
   final String hintText;
@@ -13,6 +14,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.maxLines,
     required this.fontSize,
     required this.hintText,
+    this.onChanged,
   });
 
   @override
@@ -25,6 +27,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
+      onChanged: onChanged,
       maxLines: maxLines,
       cursorColor: kPrimaryColor,
       keyboardType: TextInputType.text,
