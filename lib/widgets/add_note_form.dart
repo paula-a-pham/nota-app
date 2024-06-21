@@ -61,21 +61,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
           Row(
             children: <Widget>[
               Expanded(
-                child: CustomFilledButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        NoteModel note = NoteModel(
-                            title: titleController.text,
-                            subTitle: subTitleController.text,
-                            color: Colors.transparent.value);
-                        widget.onPressed(note);
-                      } else {
-                        setState(() {
-                          autovalidateMode = AutovalidateMode.always;
-                        });
-                      }
-                    },
-                    title: 'Save'),
+                child:
+                    CustomFilledButton(onPressed: onAddPressed, title: 'Save'),
               ),
             ],
           ),
@@ -85,5 +72,19 @@ class _AddNoteFormState extends State<AddNoteForm> {
         ],
       ),
     );
+  }
+
+  void onAddPressed() {
+    if (formKey.currentState!.validate()) {
+      NoteModel note = NoteModel(
+          title: titleController.text,
+          subTitle: subTitleController.text,
+          color: Colors.transparent.value);
+      widget.onPressed(note);
+    } else {
+      setState(() {
+        autovalidateMode = AutovalidateMode.always;
+      });
+    }
   }
 }

@@ -13,14 +13,14 @@ class EditNoteColorListView extends StatefulWidget {
 
 class _EditNoteColorListViewState extends State<EditNoteColorListView> {
   int currentIndex = 0;
-@override
+  @override
   void initState() {
     super.initState();
     currentIndex = widget.colorIndex;
   }
+
   @override
   Widget build(BuildContext context) {
-    
     return ListView.separated(
       scrollDirection: Axis.horizontal,
       itemBuilder: (context, index) => GestureDetector(

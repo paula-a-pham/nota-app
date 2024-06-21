@@ -6,9 +6,12 @@ part 'edit_note_state.dart';
 
 class EditNoteCubit extends Cubit<EditNoteState> {
   EditNoteCubit() : super(EditNoteInitial());
+
   int noteColor = Colors.transparent.value;
+
   static EditNoteCubit getAddNoteCubit(BuildContext context) =>
       BlocProvider.of(context);
+
   void editNote(NoteModel note) async {
     try {
       emit(EditNoteLoading());

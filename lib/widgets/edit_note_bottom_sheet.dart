@@ -23,7 +23,8 @@ class _EditNoteBottomSheetState extends State<EditNoteBottomSheet> {
   int? colorIndex;
   final GlobalKey<FormState> formKey = GlobalKey();
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    super.initState();
     if (widget.note.color == Colors.transparent.value) {
       colorIndex = 0;
     } else {
@@ -31,6 +32,10 @@ class _EditNoteBottomSheetState extends State<EditNoteBottomSheet> {
         Color(widget.note.color),
       );
     }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(
           right: 25.0,
