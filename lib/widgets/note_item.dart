@@ -14,18 +14,29 @@ class NoteItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: Color(note.color),
         borderRadius: BorderRadius.circular(8.0),
-        border: Border.all(color: Colors.white, width: 0.5),
+        border: Border.all(
+            color: note.color == Colors.transparent.value
+                ? Colors.white
+                : Color(note.color),
+            width: 0.5),
       ),
       child: ListTile(
         title: Text(
           note.title,
-          style: const TextStyle(fontWeight: FontWeight.w500),
+          style: TextStyle(
+              color: note.color == Colors.transparent.value
+                  ? Colors.white
+                  : Colors.black,
+              fontWeight: FontWeight.w500),
         ),
         subtitle: Text(
           note.subTitle,
           maxLines: 5,
           overflow: TextOverflow.ellipsis,
-          style: const TextStyle(color: Colors.white70),
+          style: TextStyle(
+              color: note.color == Colors.transparent.value
+                  ? Colors.white70
+                  : Colors.black54),
         ),
       ),
     );
