@@ -1,11 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nota/constants/colors.dart';
 import 'package:nota/cubits/edit_note_cubit/edit_note_cubit.dart';
 import 'package:nota/cubits/notes_cubit/notes_cubit.dart';
 import 'package:nota/models/note_model.dart';
 import 'package:nota/widgets/custom_filled_button.dart';
 import 'package:nota/widgets/custom_text_form_field.dart';
+import 'package:nota/widgets/edit_note_color_list_view.dart';
 
 class EditNoteBottomSheet extends StatefulWidget {
   final NoteModel note;
@@ -18,9 +20,17 @@ class EditNoteBottomSheet extends StatefulWidget {
 
 class _EditNoteBottomSheetState extends State<EditNoteBottomSheet> {
   String? title, subTitle;
+  int? colorIndex;
   final GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
+    if (widget.note.color == Colors.transparent.value) {
+      colorIndex = 0;
+    } else {
+      colorIndex = kColorList.indexOf(
+        Color(widget.note.color),
+      );
+    }
     return Padding(
       padding: EdgeInsets.only(
           right: 25.0,
@@ -69,7 +79,16 @@ class _EditNoteBottomSheetState extends State<EditNoteBottomSheet> {
                       hintText: 'Sub Title',
                     ),
                     const SizedBox(
-                      height: 10.0,
+                      height: 15.0,
+                    ),
+                    SizedBox(
+                      height: 27 * 2,
+                      child: EditNoteColorListView(
+                        colorIndex: colorIndex!,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15.0,
                     ),
                     Row(
                       children: <Widget>[
